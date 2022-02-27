@@ -1,49 +1,90 @@
-#include <cstdlib>
-#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <string.h>
-double PI = 3.141592;
-int error_code(char str[]);
-double pars_strok(char str[]);
+#include <iostream>
+float perimetr(float r);
+float area(float S);
 
-int main()
-{
-    char str[100];
-    double n = 0, perimeter = 0, area = 0;
-    gets(str);
-    if (error_code(str) == 1) {
-        n = pars_strok(str);
-        perimeter = 2 * PI * n;
-        area = PI * pow(n, 2);
-        printf("P = %.4f\n", perimeter);
-        printf("S = %.4f", area);
-    }
+int main(){
+	int k=1,c=7,n=0,z=1;
+	char s[99],xs[20]={0},ys[20]={0},rs[99]={0};
+	double y=0, x=0, r=0;
+	puts("Enter geometric shape:");
+	gets(s);
+	for (int i=0;i<strlen(s);i++){
+		if ((s[i]=='c')&&(s[i+1]=='i')&&(s[i+2]=='r')&&(s[i+3]=='c')&&(s[i+4]=='l')&&(s[i+5]=='e')&&(s[i+6]=='(')){
+			k+=6;
+			break;
+		} else {
+			printf("^\nError at column 0: expected 'circle'");
+			exit(0);
+		}	
+	}
+	for (k;k<100;k++){
+		if (s[k]==' ') {
+			while (c<k){
+				xs[n]=s[c];
+				n++;
+				c++;
+			}
+			x=atof(xs);
+			if (x==NULL){
+				printf("\nError at column %d: expected '<double>'",k);
+				exit(0);
+			}
+			n=0;
+			c=k+1;
+		}
+		if (s[k]==',') {
+			while (c<k){
+				ys[n]=s[c];
+				n++;
+				c++;
+			}
+			y=atof(ys);
+			if (y==NULL){
+				exit(0);
+			}
+			n=0;
+			c=k+1;
+		}
+		if (s[k]==')') {
+			while (c<k) {
+				rs[n]=s[c];
+				n++;
+				c++;
+			}
+			r=atof(rs);
+			if (r==NULL){
+				exit(0);
+			}
+			n=0;
+		}
+	}
+	while (s[z]!='\0') {
+		if (s[z+1]=='\0'&&s[z]!=')'){
+        	printf("\nError at column %d: expected ')' \n\n",z);
+        	exit(0);
+    	}
+		z++;
+   	}
+	printf("\nOkruzhnost: ");
+	printf("x=%.0f ", x);
+	printf("y=%.0f ", y);
+	printf("r=%.0f\n", r);
+	printf("P=%.4f",perimetr(r));
+	printf(" ");
+	printf("S=%.4f",area(r));
 }
 
-int error_code(char str[])
-{
-    char* figure = strstr(str, "circle");
-    if (figure == NULL) {
-        printf("Error at column 0: expected 'circle'\n\n");
-    } else {
-        return 1;
-    }
+//Периметр
+float perimetr(float r) {  
+	float P=2*M_PI*r;
+	return P;
 }
-
-double pars_strok(char str[])
-{
-    double x = 0, y = 0, rad;
-    char *probel_x, *probel_y, *probel_radius;
-    for (int i = 0; i < 100; i++) {
-        if (str[i - 1] == '(')
-            probel_x = &str[i];
-        if (str[i - 1] == ',')
-            probel_radius = &str[i];
-        if (str[i + 1] == '\0')
-            break;
-    }
-    x = strtod(probel_x, &probel_y);
-    y = strtod(probel_y, NULL);
-    rad = strtod(probel_radius, NULL);
-    return rad;
+//Площадь
+float area(float r){
+	float S=M_PI*pow(r,2);
+	return S;
 }
