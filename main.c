@@ -23,7 +23,7 @@ int main()
             exit(0);
         }
     }
-    for (k; k < 100; k++) {
+    for (; k < 100; k++) {
         if (s[k] == ' ') {
             while (c < k) {
                 xs[n] = s[c];
