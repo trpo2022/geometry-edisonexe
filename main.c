@@ -1,4 +1,3 @@
-#include <iostream>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,8 +8,8 @@ float area(float S);
 int main()
 {
     int k = 1, c = 7, n = 0, z = 1;
-    char s[99], xs[20] = {0}, ys[20] = {0}, rs[99] = {0};
-    double y = 0, x = 0, r = 0;
+    char s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
+    float y = 0, x = 0, r = 0;
     puts("Enter geometric shape:");
     gets(s);
     for (int i = 0; i < strlen(s); i++) {
@@ -32,7 +31,7 @@ int main()
                 c++;
             }
             x = atof(xs);
-            if (x == NULL) {
+            if (x == 0.0) {
                 printf("\nError at column %d: expected '<double>'", k);
                 exit(0);
             }
@@ -46,7 +45,8 @@ int main()
                 c++;
             }
             y = atof(ys);
-            if (y == NULL) {
+            if (y == 0.0) {
+                printf("\nError at column %d: expected '<double>'", k - 1);
                 exit(0);
             }
             n = 0;
@@ -59,7 +59,8 @@ int main()
                 c++;
             }
             r = atof(rs);
-            if (r == NULL) {
+            if (r == 0.0) {
+                printf("\nError at column %d: expected '<double>'", k - 1);
                 exit(0);
             }
             n = 0;
