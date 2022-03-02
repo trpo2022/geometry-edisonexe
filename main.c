@@ -11,7 +11,7 @@ int main()
     char s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
     float y = 0, x = 0, r = 0;
     puts("Enter geometric shape:");
-    fgets(s,99,stdin);
+    fgets(s, 99, stdin);
     for (int i = 0; i < strlen(s); i++) {
         if ((s[i] == 'c') && (s[i + 1] == 'i') && (s[i + 2] == 'r')
             && (s[i + 3] == 'c') && (s[i + 4] == 'l') && (s[i + 5] == 'e')
@@ -32,7 +32,7 @@ int main()
             }
             x = atof(xs);
             if (x == 0.0) {
-                printf("\nError at column %d: expected '<double>'", k);
+                printf("\nError at column %d: expected '<double>'\n", k - 2);
                 exit(0);
             }
             n = 0;
@@ -46,7 +46,7 @@ int main()
             }
             y = atof(ys);
             if (y == 0.0) {
-                printf("\nError at column %d: expected '<double>'", k - 1);
+                printf("\nError at column %d: expected '<double>'\n", k - 2);
                 exit(0);
             }
             n = 0;
@@ -60,13 +60,13 @@ int main()
             }
             r = atof(rs);
             if (r == 0.0) {
-                printf("\nError at column %d: expected '<double>'", k - 1);
+                printf("\nError at column %d: expected '<double>'\n", k - 1);
                 exit(0);
             }
             n = 0;
         }
     }
-    while (s[z] != '\0') {
+    while (s[z + 1] != '\0') {
         if (s[z + 1] == '\0' && s[z] != ')') {
             printf("\nError at column %d: expected ')' \n\n", z);
             exit(0);
@@ -74,9 +74,9 @@ int main()
         z++;
     }
     printf("\nOkruzhnost: ");
-    printf("x=%.0f ", x);
-    printf("y=%.0f ", y);
-    printf("r=%.0f\n", r);
+    printf("x=%.1f ", x);
+    printf("y=%.1f ", y);
+    printf("r=%.1f\n", r);
     printf("P=%.4f", perimetr(r));
     printf(" ");
     printf("S=%.4f", area(r));
