@@ -79,7 +79,7 @@ int main()
     printf("r=%.1f\n", r);
     printf("P=%.4f", perimetr(r));
     printf(" ");
-    printf("S=%.4f", area(r));
+    printf("S=%.4f\n", area(r));
 }
 
 //Периметр
