@@ -11,7 +11,7 @@ int main()
     char s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
     float y = 0, x = 0, r = 0;
     puts("Enter geometric shape:");
-    gets(s);
+    fgets(s,99,stdin);
     for (int i = 0; i < strlen(s); i++) {
         if ((s[i] == 'c') && (s[i + 1] == 'i') && (s[i + 2] == 'r')
             && (s[i + 3] == 'c') && (s[i + 4] == 'l') && (s[i + 5] == 'e')
