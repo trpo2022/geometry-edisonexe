@@ -60,15 +60,15 @@ int main()
             }
             r = atof(rs);
             if (r == 0.0) {
-                printf("\nError at column %d: expected '<double>'\n", k - 1);
+                printf("\nError at column %d: expected '<double>'\n", k - 2);
                 exit(0);
             }
             n = 0;
         }
     }
     while (s[z + 1] != '\0') {
-        if (s[z + 1] == '\0' && s[z] != ')') {
-            printf("\nError at column %d: expected ')' \n\n", z);
+        if (s[z + 2] == '\0' && s[z] != ')') {
+            printf("\nError at column %d: expected ')' \n\n", z + 1);
             exit(0);
         }
         z++;
