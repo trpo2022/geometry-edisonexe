@@ -73,13 +73,12 @@ int main()
         }
         z++;
     }
-    printf("\nOkruzhnost: ");
-    printf("x=%.1f ", x);
-    printf("y=%.1f ", y);
-    printf("r=%.1f\n", r);
-    printf("P=%.4f", perimetr(r));
-    printf(" ");
-    printf("S=%.4f\n", area(r));
+    printf("\ncircle\n");
+    printf("x = %.1f\n", x);
+    printf("y = %.1f\n", y);
+    printf("r = %.1f\n", r);
+ // printf("P = %.4f\n", perimetr(r));
+ // printf("S = %.4f\n", area(r));
 }
 
 //Периметр
