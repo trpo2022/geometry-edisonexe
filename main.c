@@ -8,7 +8,7 @@ float area(float S);
 int main()
 {
     int k = 1, c = 7, n = 0, z = 1;
-    char s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
+    char cir[20], s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
     float y = 0, x = 0, r = 0;
     puts("Enter geometric shape:");
     fgets(s, 99, stdin);
@@ -23,6 +23,8 @@ int main()
             exit(0);
         }
     }
+    for (int i = 0; i <= 5; i++)
+        cir[i] = s[i];
     for (; k < 100; k++) {
         if (s[k] == ' ') {
             while (c < k) {
@@ -73,12 +75,12 @@ int main()
         }
         z++;
     }
-    printf("\ncircle\n");
+    printf("\n%s\n", cir);
     printf("x = %.1f\n", x);
     printf("y = %.1f\n", y);
     printf("r = %.1f\n", r);
- // printf("P = %.4f\n", perimetr(r));
- // printf("S = %.4f\n", area(r));
+    // printf("P = %.4f\n", perimetr(r));
+    // printf("S = %.4f\n", area(r));
 }
 
 //Периметр
