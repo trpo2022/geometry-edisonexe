@@ -2,4 +2,4 @@ a.out
 *.o
 *.a
 *geo
-bin/geo
+bin/geometry
