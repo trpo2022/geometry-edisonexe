@@ -10,7 +10,7 @@ APP_PATH = $(BIN_DIR)/$(APP_NAME)
 LIB_PATH = $(OBJ_DIR)/$(LIB_NAME)/$(LIB_NAME).a
 
 
-$(APP_PATH):  $(OBJ_DIR)/$(APP_NAME)/main.o $(OBJ_DIR)/$(LIB_NAME)/libgeo.a
+$(APP_PATH):  $(OBJ_DIR)/$(APP_NAME)/main.o $(OBJ_DIR)/$(LIB_NAME)/libgeometry.a
 	gcc $(CFLAGS) $^ -o $@ -lm
 
 $(OBJ_DIR)/$(APP_NAME)/main.o: $(SRC_DIR)/$(APP_NAME)/main.c
