@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-float parsing(float x, float y, float r)
+void parsing(float x, float y, float r)
 {
     int k = 1, c = 7, n = 0, z = 1;
     char cir[6], s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
