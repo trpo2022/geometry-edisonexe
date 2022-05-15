@@ -1,5 +1,5 @@
-#include <geo.c>
 #include <ctest.h>
+#include <geo.c>
 #include <math.h>
 #include <stdlib.h>
 CTEST(set_geometry, test_perimetr)
