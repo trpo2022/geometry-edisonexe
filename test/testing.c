@@ -1,5 +1,5 @@
+#include <geo.c>
 #include <ctest.h>
-#include <geo.h>
 #include <math.h>
 #include <stdlib.h>
 CTEST(set_geometry, test_perimetr)
@@ -17,7 +17,7 @@ CTEST(set_geometry, test_crossing)
     int i = 1;
     const int exp = 0;
     float number1[10];
-    float pointx[5][6], pointy[5][6];
+    float pointx[5][5], pointy[5][5];
     int k[5][6];
     pointx[0][0] = 1;
     pointx[0][1] = 1;
@@ -44,7 +44,7 @@ CTEST(set_geometry, test_threeperimetr)
 {
     int i = 1;
     const int exp = 13;
-    float pointx[5][6], pointy[5][6], perimetr[6];
+    float pointx[5][5], pointy[5][5], perimetr[6];
     pointx[0][1] = 1;
     pointy[0][1] = 1;
     pointx[1][1] = 2;
@@ -58,7 +58,7 @@ CTEST(set_geometry, test_nastsquare)
 {
     int i = 1;
     const int exp = 6;
-    float pointx[5][6], pointy[5][6], ploshad[6];
+    float pointx[5][5], pointy[5][5], ploshad[6];
     pointx[0][1] = 1;
     pointy[0][1] = 1;
     pointx[1][1] = 2;
