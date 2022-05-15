@@ -93,8 +93,7 @@ void thevvod(float pointx[][5], float pointy[][5], float number1[], int i)
         }
         if (t == 0)
             printf("\nThis object does not intersect any other");
-    	}  else {
-        	printf("Wrong object type");
+    } else {
+        printf("Wrong object type");
     }
 }
-
