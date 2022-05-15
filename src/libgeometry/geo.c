@@ -64,7 +64,7 @@ void squarecircle(float ploshad[], int i, float number1[])
 }
 void thevvod(float pointx[][5], float pointy[][5], float number1[], int i)
 {
-    char circle[2] = "c", triangle[2] = "t", polygon[2] = "p";
+    char circle[2] = "c";
     int gg = 0;
     printf("\nEnter first letter of object type>");
     scanf("%s", &object[i]);
