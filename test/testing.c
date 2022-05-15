@@ -78,4 +78,3 @@ CTEST(set_geometry, test_squarecircle)
     squarecircle(ploshad, i, number1);
     ASSERT_EQUAL(exp, ploshad[i]);
 }
-
