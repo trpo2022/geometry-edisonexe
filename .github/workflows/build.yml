@@ -16,4 +16,4 @@ jobs:
         run: make && make test
         
       - name: ctest
-        run: bin/geo-test 
+        run: bin/geometry-test 
