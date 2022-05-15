@@ -3,89 +3,98 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void parsing(float x, float y, float r)
+
+char object[10];
+
+void crossings(
+        int i,
+        float pointx[][5],
+        float pointy[][5],
+        int k[][6],
+        float number1[])
 {
-    int k = 1, c = 7, n = 0, z = 1;
-    char cir[6], s[99], xs[20] = {0}, ys[20] = {0}, rs[20] = {0};
-    puts("Enter geometric shape:");
-    fgets(s, 99, stdin);
-    for (int i = 0; i < strlen(s); i++) {
-        if ((s[i] == 'c') && (s[i + 1] == 'i') && (s[i + 2] == 'r')
-            && (s[i + 3] == 'c') && (s[i + 4] == 'l') && (s[i + 5] == 'e')
-            && (s[i + 6] == '(')) {
-            k += 6;
-            break;
-        } else {
-            printf("^\nError at column 0: expected 'circle'");
-            exit(0);
+    char circle[2] = "c";
+    int j;
+    if (i > 0) {
+        for (j = i - 1; j > -1; j--) {
+            if (object[j] == circle[0]) {
+                k[j][i]
+                        = sqrt(pow((pointx[0][i] - pointx[0][j]), 2)
+                               + pow((pointy[0][i] - pointy[0][j]), 2));
+                if (k[j][i] < (number1[i] + number1[j]))
+                    k[j][i] = 1;
+                else
+                    k[j][i] = 0;
+            }
         }
     }
-    for (int i = 0; i <= 5; i++)
-        cir[i] = s[i];
-    for (; k < 100; k++) {
-        if (s[k] == ' ') {
-            while (c < k) {
-                xs[n] = s[c];
-                n++;
-                c++;
-            }
-            x = atof(xs);
-            if (x == 0.0) {
-                printf("\nError at column %d: expected '<double>'\n", k - 2);
-                exit(0);
-            }
-            n = 0;
-            c = k + 1;
-        }
-        if (s[k] == ',') {
-            while (c < k) {
-                ys[n] = s[c];
-                n++;
-                c++;
-            }
-            y = atof(ys);
-            if (y == 0.0) {
-                printf("\nError at column %d: expected '<double>'\n", k - 2);
-                exit(0);
-            }
-            n = 0;
-            c = k + 1;
-        }
-        if (s[k] == ')') {
-            while (c < k) {
-                rs[n] = s[c];
-                n++;
-                c++;
-            }
-            r = atof(rs);
-            if (r == 0.0) {
-                printf("\nError at column %d: expected '<double>'\n", k - 2);
-                exit(0);
-            }
-            n = 0;
-        }
-    }
-    while (s[z + 1] != '\0') {
-        if (s[z + 2] == '\0' && s[z] != ')') {
-            printf("\nError at column %d: expected ')' \n\n", z + 1);
-            exit(0);
-        }
-        z++;
-    }
-    printf("\n%s\n", cir);
-    printf("x = %.1f\n", x);
-    printf("y = %.1f\n", y);
-    printf("r = %.1f\n", r);
 }
 
-float perimetr(float r)
+void perimetrthree(
+        float perimetr[], int i, float pointx[][5], float pointy[][5])
 {
-    float P = 2 * M_PI * r;
-    return P;
+    perimetr[i] = sqrt(pow((pointx[0][i] - pointx[1][i]), 2)
+                       + pow((pointy[0][i] - pointy[1][i]), 2))
+            + sqrt(pow((pointx[1][i] - pointx[2][i]), 2)
+                   + pow((pointy[1][i] - pointy[2][i]), 2))
+            + sqrt(pow((pointx[2][i] - pointx[0][i]), 2)
+                   + pow((pointy[2][i] - pointy[0][i]), 2));
+}
+void ploshadthree(float ploshad[], int i, float pointx[][5], float pointy[][5])
+{
+    int d;
+    d = 0.5
+            * ((pointx[0][i] - pointx[2][i]) * (pointy[1][i] - pointy[2][i])
+               - (pointx[1][i] - pointx[2][i]) * (pointy[0][i] - pointy[2][i]));
+    ploshad[i] = abs(d);
+}
+int nasttest1(float number1[], int i, int gg)
+{
+    if (number1[i] < 0)
+        gg = 1;
+    return gg;
+}
+void perimetrcir(float perimetr[], int i, float number1[])
+{
+    perimetr[i] = (M_PI * 2 * number1[i]);
+}
+void squarecircle(float ploshad[], int i, float number1[])
+{
+    ploshad[i] = number1[i] * number1[i] * M_PI;
+}
+void thevvod(float pointx[][5], float pointy[][5], float number1[], int i)
+{
+    char circle[2] = "c";
+    int gg = 0;
+    printf("\nEnter first letter of object type>");
+    scanf("%s", &object[i]);
+    int j, k[5][6], t;
+    float perimetr[10], ploshad[10];
+    if (object[i] == circle[0]) {
+        printf("\nEnter 1 point[x][y] value>");
+        scanf("%f%f", &pointx[0][i], &pointy[0][i]);
+        printf("\nEnter radius value>");
+        scanf("%f", &number1[i]);
+        gg = nasttest1(number1, i, gg);
+        if (gg == 1) {
+            printf("Radius has incorrect value");
+            return;
+        }
+        t = 0;
+        perimetrcir(perimetr, i, number1);
+        squarecircle(ploshad, i, number1);
+        printf("\nPerimetr = %f, Area = %f", perimetr[i], ploshad[i]);
+        crossings(i, pointx, pointy, k, number1);
+        for (j = i - 1; j > -1; j--) {
+            if (k[j][i] == 1) {
+                printf("\nThis object intersects with object #%d", j);
+                t = 1;
+            }
+        }
+        if (t == 0)
+            printf("\nThis object does not intersect any other");
+    	}  else {
+        	printf("Wrong object type");
+    }
 }
 
-float area(float r)
-{
-    float S = M_PI * pow(r, 2);
-    return S;
-}

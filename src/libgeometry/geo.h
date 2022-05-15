@@ -1,4 +1,8 @@
 #pragma once
-void parsing(float x, float y, float r);
-float perimetr(float r);
-float area(float S);
+void thevvod();
+void perimetrcir();
+void squarecircle();
+void crossings();
+int nasttest1();
+void perimetrthree();
+void ploshadthree();
